@@ -6,6 +6,8 @@
     <title>App</title>
 </head>
 <body>
-    <h1><?php echo "Hello World"; ?></h1>
+    <?php for($i=1; $i<=10; $i++):?>
+        <h1><?php echo "Hello World"; ?></h1>
+    <?php endfor;?>
 </body>
 </html>
