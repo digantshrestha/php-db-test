@@ -1,4 +1,36 @@
 <?php include_once('shared/header.php')?>
+<?php
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+        $db = connect();
+
+        $sql = 'INSERT INTO enquiries 
+        (first_name, last_name, email, contact_no, course_id, message, status)
+        VALUES ($1, $2, $3, $4, $5, $6, $7)';
+
+        $first_name = htmlspecialchars($_POST['first_name']);
+        $last_name = htmlspecialchars($_POST['last_name']);
+        $email = htmlspecialchars($_POST['email']);
+        $contact_no = htmlspecialchars($_POST['contact_no']);
+        $course_id = htmlspecialchars($_POST['course_id']);
+        $message = htmlspecialchars($_POST['message']);
+        $status = 'false';
+
+        $params = [
+            $first_name, 
+            $last_name, 
+            $email, 
+            $contact_no, 
+            $course_id, 
+            $message, 
+            $status
+        ];
+
+        $result = execute($db, $sql, $params);
+        close($db);
+    }
+
+?>
+
     <div class="page-header">
         <h1>Enquiry Form</h1>
     </div>

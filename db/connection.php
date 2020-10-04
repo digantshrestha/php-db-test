@@ -15,6 +15,11 @@ function query($db, $sql){
     return pg_query($db, $sql);
 }
 
+function execute($db, $sql, $args){
+    pg_prepare($db, 'crud-query', $sql);
+    return pg_execute($db, 'crud-query', $args);
+}
+
 function fetch_record($result){
     return pg_fetch_assoc($result);
 }

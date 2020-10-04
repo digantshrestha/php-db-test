@@ -6,7 +6,8 @@ create table courses(
     duration int,
     duration_type char(1), 
     added_date timestamp default current_timestamp,
-    modified_date timestamp null, status boolean
+    modified_date timestamp null, 
+    status boolean
 );
 
 insert into courses (course_name, course_code, course_fees, duration, duration_type, status)
